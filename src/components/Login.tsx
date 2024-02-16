@@ -17,23 +17,11 @@ const Login = () => {
             const response = await axios.post('/api/user/login', userDet)
             const user = response.data;
             console.log('Login Successfully', user.message);
-            setTimeout(()=>{
-              router.push(`/home/${id}`);
-            }, 1000)
+              router.push('/');
         } catch (error: any) {
             console.log('Login Failed', error.message)
         }
     }
-    // UserId Pass...................
-    const [id, setId] = useState('')
-  useEffect(()=>{
-    const getUserDetails = async ()=>{
-      const res = await axios.get('/api/user/me');
-      console.log(res.data);
-      setId(res.data.data._id);
-    }
-    getUserDetails();
-  }, [])
   return (
     <div>
       <div className="flex flex-col items-center">

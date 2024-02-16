@@ -1,9 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { useRouter } from 'next/navigation';
 
 const Register = () => {
-    const router = useRouter();
     const [userDet, setUserDet] = useState({
         username: '',
         email: '',
@@ -15,7 +13,8 @@ const Register = () => {
         try {
             const response = await axios.post('/api/user/register', userDet);
             console.log('signup okey', response.data)
-            router.push('/login')
+            alert('Register Successfully!')
+            window.location.reload();
         } catch (error: any) {
             console.log('Failed to sign up user', error.message)
         }

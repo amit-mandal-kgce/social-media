@@ -7,20 +7,21 @@ import Link from "next/link";
 import Post from "@/components/Post";
 
 const Home = () => {
-  const [isBoxPost, setIsBoxPost] = useState(false);
+    const [isBoxPost, setIsBoxPost] = useState(false);
   const handelPost = ()=>{
     setIsBoxPost(!isBoxPost);
   }
   return (
-    <div className='flex flex-col justify-center items-center my-14'>
+    <div className='flex flex-col justify-center items-center '>
+      <div className="w-[300px] sm:w-[400px] md:w-[500px]">
       <div className="flex flex-row justify-between border-b-4 p-2 w-[300px] sm:w-[400px] md:w-[500px]">
         <Link href={'/userprofile'} className="flex flex-row gap-4">
         <Image src="/amit.jpg" alt="Bird" width={100} height={100} className='w-[30px] h-[30px] rounded-full' />
         <h1 className="font-bold text-sm sm:text-base">Amit Mandal</h1>
         </Link>
-        <button onClick={handelPost} className="flex flex-row text-white font-bold items-center bg-blue-400 gap-3 rounded-2xl px-3 py-1 text-xs md:text-sm"><IoMdAdd className="text-xl md:text-2xl"/>{' '}Post</button>
-        <Post isPost={isBoxPost} handelPost={handelPost}/>
+        <button onClick={handelPost} className="flex flex-row text-white font-bold items-center bg-blue-400 gap-1 md:gap-2 rounded-2xl px-3 md:py-1 text-xs md:text-sm"><IoMdAdd className="text-base md:text-2xl"/>{' '}Post</button>
       </div>
+      {isBoxPost && <Post/>}
       {
         [1,2,3,4,5,6,7,8,9,10].map((ele)=>(
       <div key={ele} className="">
@@ -43,6 +44,7 @@ const Home = () => {
       </div>
         ))
       }
+      </div>
     </div>
   )
 }

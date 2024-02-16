@@ -1,10 +1,9 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import cloudinaryConfig from '../../cloudinary.config'
-import { RxCross2 } from 'react-icons/rx'
 
 
-const ProfileBackImage = ({isVisible,handelBgImage}: any) => {
+const ProfileBackImage = () => {
     // UserId Pass...................
     const [id, setId] = useState('')
   useEffect(()=>{
@@ -15,28 +14,29 @@ const ProfileBackImage = ({isVisible,handelBgImage}: any) => {
     }
     getUserDetails();
   }, [])
-  const [imageBack, setImageBack] = useState(null);
+
+ const [image, setImage] = useState(null);
  const handleImageChange = (e: any) => {
-    setImageBack(e.target.files[0]);
+    setImage(e.target.files[0]);
   };
 
-  const uploadImageBg = async (e: any) => {
+  const uploadImage = async (e: any) => {
   e.preventDefault();
 
   try {
-    if (imageBack) {
+    if (image) {
       const formData = new FormData();
-      formData.append("file", imageBack);
-      formData.append("upload_preset", "social-media-next");
+      formData.append("file", image);
+      formData.append("upload_preset", "sociapbackground");
 
       const res = await axios.post(
-        `https://api.cloudinary.com/v1_1/${cloudinaryConfig.cloud_name}/imageBack/upload`,
+        `https://api.cloudinary.com/v1_1/${cloudinaryConfig.cloud_name}/image/upload`,
         formData
       );
-      const imageUrlBack = res.data.secure_url;
+      const imageUrl = res.data.secure_url;
 
-      console.log("Image URL:", imageUrlBack);
-      return imageUrlBack;
+      console.log("Image URL:", imageUrl);
+      return imageUrl;
     } else {
       console.error("No image selected");
     }
@@ -47,27 +47,26 @@ const ProfileBackImage = ({isVisible,handelBgImage}: any) => {
 const handelSubmit = async (e: any)=>{
     e.preventDefault()
     try {
-      const imageUrlBack = await uploadImageBg(e);
+      const imageUrl = await uploadImage(e);
       const postData = {
       userId: id,
-      backImage: imageUrlBack,
+      backImage: imageUrl,
     };
       const response = await axios.post('/api/user/profilebackimage', postData);
             console.log('signup okey', response.data)
+            alert('Profile Back Image Upgrade!')
             window.location.reload();
     } catch (error: any) {
       console.log('Failed to sign up user', error.message)
     }
 }
   return (
-    <div className='flex flex-col p-2 absolute bg-gray-100 shadow' style={{ display: isVisible ? 'block' : 'none' }}>
-      <div className="flex flex-row justify-between items-center w-full mb-2">
-        <h1 className="font-bold text-xs md:text-base">Add Background Image</h1>
-        <button onClick={handelBgImage}><RxCross2/></button>
-      </div>
+    <div className='flex flex-col mt-10 p-2 w-full bg-gray-100 shadow'>
       <form className="flex flex-col" onSubmit={handelSubmit}>
         <input type="file" className='mb-2' accept="image/*" onChange={handleImageChange}/>
-        <button type='submit' className='text-sm font-bold px-3 mb-2 bg-blue-700 text-white'>Submit</button>
+        <div>
+         <button type='submit' className='text-sm rounded font-bold px-3 mb-2 bg-blue-700 text-white'>Submit</button>
+        </div>
       </form>
     </div>
   )

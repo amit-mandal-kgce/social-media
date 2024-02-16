@@ -1,9 +1,18 @@
 "use client"
-import Login from "@/components/Login";
-import Register from "@/components/Register";
+import { IoHome, IoBagHandleSharp, IoNotifications  } from "react-icons/io5";
+import { BiSolidMessageRoundedDetail } from "react-icons/bi";
+import { FaUserFriends } from "react-icons/fa";
+import { IoMdMenu } from "react-icons/io";
 import { useState } from "react";
-export default function Home() {
-  const [selectedButton, setSelectedButton] = useState(null);
+import Home from "@/routers/Home";
+import Network from "@/routers/Network";
+import Message from "@/routers/Message";
+import Jobs from "@/routers/Jobs";
+import Notification from "@/routers/Notification";
+import Menu from "@/routers/Menu";
+
+export default function Page() {
+const [selectedButton, setSelectedButton] = useState(null);
   const handelButton = (button: any) => {
     if (selectedButton === button) {
       setSelectedButton(null);
@@ -12,30 +21,39 @@ export default function Home() {
     }
   };
   const renderDetails = () => {
-    if (selectedButton === 'login') {
-      return <Login/>;
-    } else if (selectedButton === 'register') {
-      return <Register/>;
+    if (selectedButton === 'home') {
+      return <Home/>;
+    } else if (selectedButton === 'network') {
+      return <Network/>;
+    } else if (selectedButton === 'message') {
+      return <Message/>;
+    }else if (selectedButton === 'jobs') {
+      return <Jobs/>;
+    }else if (selectedButton === 'notification') {
+      return <Notification/>;
+    }else if (selectedButton === 'menu') {
+      return <Menu/>;
     }
-    return <Login/>;
+    return <Home/>;
   };
    const getButtonStyle = (button: any) => {
     return {
-      color: selectedButton === button ? 'white' : 'black',
+      color: selectedButton === button ? 'blue' : 'black',
     };
   };
   return (
-    <main className="flex flex-col  justify-center items-center bg-slate-400 h-screen">
-      <div className="p-5 bg-red-300">
-          <div className="flex flex-row justify-around w-full items-center bg-blue-200 gap-5 p-2 mb-4">
-            <button onClick={()=> handelButton('login')} style={getButtonStyle('login')} className=' text-base md:text-2xl font-bold'>Login</button>
-            <button onClick={()=> handelButton('register')} style={getButtonStyle('register')} className=' text-base md:text-2xl font-bold'>Register</button>
-          </div>
-          <div className="p-4 bg-gray-200 rounded shadow-transparent">
-            {renderDetails()}
-          </div>
-
-      </div>
-    </main>
+   <main>
+    <div className='w-screen top-0 z-50 bg-white fixed flex justify-center items-center gap-6 sm:gap-10 md:gap-14 p-2 shadow'>
+      <button onClick={()=> handelButton('home')} style={getButtonStyle('home')} className={`flex flex-col items-center text-xl sm:text-1xl md:text-2xl`}><span><IoHome/></span><span className='text-xs hidden md:block'>Home</span></button>
+      <button onClick={()=> handelButton('network')} style={getButtonStyle('network')} className={`flex flex-col items-center text-xl sm:text-1xl md:text-2xl`}><span><FaUserFriends/></span><span className='text-xs hidden md:block'>My Network</span></button>
+      <button onClick={()=> handelButton('message')} style={getButtonStyle('message')} className={`flex flex-col items-center text-xl sm:text-1xl md:text-2xl`}><span><IoBagHandleSharp/></span><span className='text-xs hidden md:block'>Jobs</span></button>
+      <button onClick={()=> handelButton('jobs')} style={getButtonStyle('jobs')} className={`flex flex-col items-center text-xl sm:text-1xl md:text-2xl`}><span><BiSolidMessageRoundedDetail/></span><span className='text-xs hidden md:block'>Messaging</span></button>
+      <button onClick={()=> handelButton('notification')} style={getButtonStyle('notification')} className={`flex flex-col items-center text-xl sm:text-1xl md:text-2xl`}><span><IoNotifications/></span><span className='text-xs hidden md:block'>Notifications</span></button>
+      <button onClick={()=> handelButton('menu')} style={getButtonStyle('menu')} className={`flex flex-col items-center text-xl sm:text-1xl md:text-2xl`}><span><IoMdMenu/></span><span className='text-xs hidden md:block'>Menu</span></button>
+    </div>
+    <div className="mt-9 md:mt-14">
+      {renderDetails()}
+    </div>
+   </main>
   );
 }

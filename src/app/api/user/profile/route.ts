@@ -22,7 +22,7 @@ export async function POST(request: NextRequest){
             isExistUser.address = address;
 
             await isExistUser.save();
-            return NextResponse.json({error: 'User profile Upgrade' },{status: 400})
+            return NextResponse.json({message: 'User profile Upgrade! Successfully!' },{status: 400})
         }
         const newProfile = new Profiles({userId,heading,industry,education,region,city,phone,address})
         const saveProfile = await newProfile.save();

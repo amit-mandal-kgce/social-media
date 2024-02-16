@@ -16,7 +16,7 @@ export async function POST(request: NextRequest){
             isExistUser.backImage = backImage;
 
             await isExistUser.save();
-            return NextResponse.json({error: 'User profile Upgrade' },{status: 400})
+            return NextResponse.json({error: 'User profile Back Image Upgrade' },{status: 400})
         }
         const newProfile = new BackImgs({userId,backImage})
         const saveProfile = await newProfile.save();

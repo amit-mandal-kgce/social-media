@@ -1,24 +1,24 @@
-import ProfileImgs from "@/models/userProfilImageModels";
-import { connectToMongoDB } from "@/dbConfig/dbConfig";
 import { NextResponse, NextRequest } from 'next/server';
-connectToMongoDB();
+import Abouts from '@/models/aboutModels';
+import {connectToMongoDB} from '@/dbConfig/dbConfig';
 
+connectToMongoDB();
 export async function POST(request: NextRequest){
     try {
         const reqBody = await request.json();
-        const {userId,profilImg} = reqBody
+        const {userId,about} = reqBody
         console.log(reqBody)
-        if(!userId || !profilImg){
+        if(!userId || !about ){
             return NextResponse.json({error: 'Plese Fill All Requires!' },{status: 400})
         }
-        const isExistUser = await ProfileImgs.findOne({userId});
+       const isExistUser = await Abouts.findOne({userId});
         if(isExistUser){ 
-            isExistUser.profilImg = profilImg;
+            isExistUser.about = about;
 
             await isExistUser.save();
-            return NextResponse.json({error: 'User profile Upgrade' },{status: 400})
+            return NextResponse.json({message: 'User Abouts Upgrade Succesfully!' },{status: 200})
         }
-        const newProfile = new ProfileImgs({userId,profilImg})
+        const newProfile = new Abouts({userId,about})
         const saveProfile = await newProfile.save();
 
         return NextResponse.json({

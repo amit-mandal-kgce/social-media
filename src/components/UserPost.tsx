@@ -1,3 +1,4 @@
+"use client"
 import Link from 'next/link'
 import { FaHeart, FaRegHeart, FaRegCommentAlt  } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
@@ -18,7 +19,9 @@ const UserPost = () => {
         <h1 className="font-bold text-sm sm:text-base">Amit Mandal</h1>
         </div>
         <button onClick={handelPost} className="flex flex-row items-center bg-blue-400 gap-3 rounded-2xl px-3 py-1 text-xs md:text-sm"><IoMdAdd/>{' '}Post</button>
-        <Post isPost={isBoxPost} handelPost={handelPost}/>
+      </div>
+      <div className="">
+        {isBoxPost && <Post/>}
       </div>
       {
         [1,2,3,4,5,6,7,8,9,10].map((ele)=>(

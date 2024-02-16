@@ -1,11 +1,11 @@
 import React from 'react'
 
-const page = () => {
+const Network = () => {
   return (
     <div>
-      Post..............
+      Network
     </div>
   )
 }
 
-export default page
+export default Network

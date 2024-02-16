@@ -1,24 +1,24 @@
-import ProfileImgs from "@/models/userProfilImageModels";
-import { connectToMongoDB } from "@/dbConfig/dbConfig";
 import { NextResponse, NextRequest } from 'next/server';
-connectToMongoDB();
+import Langauges from '@/models/langaugeModels';
+import {connectToMongoDB} from '@/dbConfig/dbConfig';
 
+connectToMongoDB();
 export async function POST(request: NextRequest){
     try {
         const reqBody = await request.json();
-        const {userId,profilImg} = reqBody
+        const {userId,langauge} = reqBody
         console.log(reqBody)
-        if(!userId || !profilImg){
+        if(!userId || !langauge){
             return NextResponse.json({error: 'Plese Fill All Requires!' },{status: 400})
         }
-        const isExistUser = await ProfileImgs.findOne({userId});
+        const isExistUser = await Langauges.findOne({userId});
         if(isExistUser){ 
-            isExistUser.profilImg = profilImg;
+            isExistUser.langauge = langauge;
 
             await isExistUser.save();
-            return NextResponse.json({error: 'User profile Upgrade' },{status: 400})
+            return NextResponse.json({message: 'User Langauge Upgrade Succesfully!' },{status: 200})
         }
-        const newProfile = new ProfileImgs({userId,profilImg})
+        const newProfile = new Langauges({userId,langauge})
         const saveProfile = await newProfile.save();
 
         return NextResponse.json({
