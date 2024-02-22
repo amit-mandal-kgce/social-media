@@ -11,6 +11,7 @@ const About = () => {
     }
     getUserDetails();
   }, [])
+  // post................................
   const [aboutSet, setAbout] = useState({
     about: '',
   })

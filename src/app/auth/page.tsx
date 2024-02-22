@@ -3,7 +3,7 @@ import Login from "@/components/Login";
 import Register from "@/components/Register";
 import { useState } from "react";
 
-const page = () => {
+const Page = () => {
     const [selectedButton, setSelectedButton] = useState(null);
   const handelButton = (button: any) => {
     if (selectedButton === button) {
@@ -41,4 +41,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page;

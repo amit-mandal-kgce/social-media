@@ -62,7 +62,7 @@ const Post = () => {
   }
 
   return (
-    <div className='flex flex-col p-2 w-full bg-gray-100 shadow'>
+    <div className='flex flex-col p-2 w-full bg-green-400 shadow'>
       <form className="flex flex-col" onSubmit={handelSubmit}>
         <textarea name="describe" cols={5} rows={2} className='mb-2' value={comment.describe} onChange={(e)=>setComment({...comment, describe: e.target.value})}/>
         <input type="file" className='mb-2' accept="image/*" onChange={handleImageChange}/>

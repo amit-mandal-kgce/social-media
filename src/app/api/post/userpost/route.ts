@@ -12,7 +12,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Please Fill All Required Fields!' }, { status: 400 });
     }
 
-    // Store the post with postImage as a string
     const newPost = new Postes({ userId, imgposty, description });
     const savePost = await newPost.save();
 
