@@ -54,14 +54,12 @@ const Page = ({ params }:{ params: { id: string } }) => {
     const userProfilesData =userprofiles.find((ele)=>(ele.userId === userId)) || {};
     return {...ele,...userDetails,...userProfilesData,_id:ele._id}
   })
-  console.log(dataFinalCom, 'dataFinalCom :>>')
   const postCommentFinal = postComment.map((ety: any)=>{
     const userId = ety.userId;
     const userDetails = userName.find((eles:any)=>(eles._id === userId)) || {};
     const userProfilesData =userprofiles.find((elex)=>(elex.userId === userId)) || {};
     return {...ety,...userDetails,...userProfilesData,_id:ety._id}
   })
-  console.log(postCommentFinal, 'postCommentFinal :>>')
   // Comment Posts.........................
   const [commentdata, setCommentData] = useState({
     comment: ''
@@ -85,7 +83,7 @@ const Page = ({ params }:{ params: { id: string } }) => {
   return (
     <div className='flex flex-col items-center'>
       <div className="p-2 w-full shadow bg-white fixed">
-            <Link href={'/'}><FaArrowLeft/></Link>
+            <Link href={'/notification'}><FaArrowLeft/></Link>
       </div>
       {dataFinalCom && dataFinalCom.map((ert: any)=>(
       <div key={ert} className="bg-gray-100 mt-10 border shadow p-2 w-[300px] sm:w-[400px] md:w-[500px]">

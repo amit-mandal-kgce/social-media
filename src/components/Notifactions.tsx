@@ -53,16 +53,18 @@ const Notifications = () => {
     const userIds = exe.userId;
     const userDetails = dataPost.find((ele:any)=>(ele._id === comtId)) || {};
     const userNamesAll = userName.find((ele:any)=>(ele._id === userIds)) || {};
-    const userProfiles = userprofiles.find((ele:any)=>(ele._id === userIds)) || {};
+    const userProfiles = userprofiles.find((ele:any)=>(ele.userId === userIds)) || {};
     return{...exe,_id:exe._id,...userDetails,...userNamesAll,...userProfiles}
   })
+  console.log('notification', notifications)
+  console.log('userprofiles', userprofiles)
   return (
     <div className='mt-2'>
       {
         notifications.map((lel: any)=>(
             <Link href={`/comment/${lel.id}`} key={lel} className="border bg-teal-400 p-2 gap-4 flex flex-row items-center shadow mb-2">
               <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-gray-700 bg-slate-500">
-                <Image src={lel.imgposty} alt='Bird' width={100} height={100} />
+                <Image src={lel.profilImg} alt='Bird' width={100} height={100} />
               </div>
               <div className="flex flex-row gap-4">
               <span className="text-xs md:text-sm font-bold">{lel.username}</span>

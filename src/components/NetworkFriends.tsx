@@ -74,15 +74,15 @@ const Connections = () => {
       {
         finalConnection && finalConnection.map((lel: any)=>(
             <div key={lel} className="border p-2 bg-teal-200 shadow mb-2">
-              <div className="gap-4 flex mb-3 flex-row items-center">
+              <Link href={`/networkprofile/${lel.connectId}`} className="gap-4 flex mb-3 flex-row items-center">
               <div className="w-12 h-12 overflow-hidden rounded-full">
                 <Image src={lel.profilImg} alt='Bird' className='bg-gray-200' width={100} height={100} />
               </div>
               <div className="flex flex-col">
-              <Link href={`/networkprofile/${lel._id}`} className="text-xs md:text-sm font-bold">{lel.username}</Link>
-              <Link href={`/networkprofile/${lel._id}`} className="text-xs md:text-sm font-light">{lel.email}</Link>
+              <div className="text-xs md:text-sm font-bold">{lel.username}</div>
+              <div className="text-xs md:text-sm font-light">{lel.email}</div>
               </div>
-              </div>
+              </Link>
               <div className="flex flex-row justify-around gap-2">
                 <Link href={`/message/${lel.userId}`} className='px-5 py-2 text-xs bg-blue-500 text-white shadow mt-2 font-bold'>Message</Link>
                 <button onClick={()=> handelClickRemove(lel._id)} className='px-5 py-2 bg-blue-500 text-white text-xs shadow mt-2 font-bold'>Unfollow</button>
@@ -93,15 +93,15 @@ const Connections = () => {
       {
         finalConnectionOther && finalConnectionOther.map((loal: any)=>(
             <div key={loal} className="border p-2 bg-teal-200 shadow mb-2">
-              <div className="gap-4 flex mb-3 flex-row items-center">
+              <Link href={`/networkprofile/${loal.userId}`} className="gap-4 flex mb-3 flex-row items-center">
               <div className="w-12 h-12 overflow-hidden rounded-full">
                 <Image src={loal.profilImg} alt='Bird' className='bg-gray-200' width={100} height={100} />
               </div>
               <div className="flex flex-col">
-              <Link href={`/networkprofile/${loal._id}`} className="text-xs md:text-sm font-bold">{loal.username}</Link>
-              <Link href={`/networkprofile/${loal._id}`} className="text-xs md:text-sm font-light">{loal.email}</Link>
+              <div className="text-xs md:text-sm font-bold">{loal.username}</div>
+              <div className="text-xs md:text-sm font-light">{loal.email}</div>
               </div>
-              </div>
+              </Link>
               <div className="flex flex-row justify-around gap-2">
                 <Link href={`/message/${loal.userId}`} className='px-5 py-2 text-xs bg-blue-500 text-white shadow mt-2 font-bold'>Message</Link>
                 <button onClick={()=> handelClickRemove(loal._id)} className='px-5 py-2 bg-blue-500 text-white text-xs shadow mt-2 font-bold'>Unfollow</button>

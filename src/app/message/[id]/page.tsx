@@ -86,7 +86,7 @@ const Page = ({ params }:{ params: { id: string } }) => {
             userAllFinal && userAllFinal.map((esx: any)=>(
               <div key={esx}>
           <div className="flex flex-row justify-between items-center border p-2 w-[300px] sm:w-[400px] md:w-[500px]">
-            <Link href={'/userprofile'} className=""><FaArrowLeft/></Link>
+            <Link href={'/messaging'} className=""><FaArrowLeft/></Link>
             <h1>{id}</h1>
             <div className="flex flex-row gap-2">
               <Image src={esx.profilImg} alt="Bird" width={100} height={100} className='w-[30px] h-[30px] rounded-full bg-gray-200' />
