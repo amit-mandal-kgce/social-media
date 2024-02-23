@@ -112,7 +112,7 @@ const Page = ({ params }: { params: { id: string } }) => {
           {
             userAllFinal && userAllFinal.map((exe: any)=>(
               <div key={exe}>
-                <div className="w-[300px] md:w-[480px] h-[200px] md:h-[300px] overflow-hidden">
+                <div className="w-[300px] md:w-[480px] h-[200px] md:h-[250px] overflow-hidden">
           <Image src={exe.backImage} alt="Bird" className='object-cover full bg-gray-300' width={1000} height={1000}/>
           </div>
           <div className="border-4 border-white absolute -mt-20 md:-mt-28 flex overflow-hidden justify-center items-center rounded-full w-[100px] md:w-[150px] h-[100px] md:h-[150px]">

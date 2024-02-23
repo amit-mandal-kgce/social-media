@@ -62,13 +62,18 @@ const NewConnection = () => {
     <div>
       {
         userAllFinal && userAllFinal.map((lel: any)=>(
-            <div key={lel} className="border p-2 gap-4 flex flex-row items-center bg-emerald-300 shadow mb-2">
-              <Image src={lel.profilImg} alt='Bird' className='bg-gray-200' width={70} height={70} />
+            <div key={lel} className="border p-2 bg-teal-200 shadow mb-2">
+              <div className="gap-4 flex mb-3 flex-row items-center">
+              <div className="w-12 h-12 overflow-hidden rounded-full">
+                <Image src={lel.profilImg} alt='Bird' className='bg-gray-200' width={100} height={100} />
+              </div>
               <div className="flex flex-col">
-                <h1 className="">{lel._id}</h1>
-              <Link href={`/networkprofile/${lel._id}`} className='text-xs font-light mb-1'>12 Connections</Link>
-              <Link href={`/networkprofile/${lel._id}`} className="text-xs md:text-sm font-bold mb-2">{lel.username}</Link>
-              <button onClick={()=> handelClick(lel._id)} className='border border-blue-500 rounded-lg text-white bg-blue-500 shadow'>Follow</button>
+              <Link href={`/networkprofile/${lel._id}`} className="text-xs md:text-sm font-bold">{lel.username}</Link>
+              <Link href={`/networkprofile/${lel._id}`} className="text-xs md:text-sm font-light">{lel.email}</Link>
+              </div>
+              </div>
+              <div>
+                <button onClick={()=> handelClick(lel._id)} className='w-full py-2 bg-blue-500 text-white text-xs rounded-md shadow mt-2 font-bold'>Follow</button>
               </div>
             </div>
         ))

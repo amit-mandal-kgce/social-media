@@ -1,6 +1,7 @@
 "use client"
 import Link from 'next/link'
 import { FaHeart, FaRegHeart, FaRegCommentAlt  } from "react-icons/fa";
+import { BsThreeDotsVertical } from "react-icons/bs";
 import { IoMdAdd } from "react-icons/io";
 import Post from './Post';
 import { useEffect, useState } from 'react';
@@ -68,9 +69,14 @@ const UserPost = () => {
         <div className=" flex flex-row items-center gap-4 mb-3 py-2 border-b-2">
           {
          profilImg && profilImg.map((ex: any)=>(
-        <div key={ex} className="flex flex-row gap-4 object-cover">
-        <Image src={ex.profilImg} alt="Bird" width={100} height={100} className='w-[30px] h-[30px] rounded-full object-cover' />
-        <h1 className="font-bold text-sm sm:text-base">{username}</h1>
+        <div key={ex} className="flex flex-row items-center justify-between w-full ">
+          <div className="flex flex-row gap-4">
+            <Image src={ex.profilImg} alt="Bird" width={100} height={100} className='w-[30px] h-[30px] rounded-full object-cover' />
+            <h1 className="font-bold text-sm sm:text-base">{username}</h1>
+          </div>
+          <button onClick={()=>console.log('Delet')}>
+            <BsThreeDotsVertical/>
+          </button>
         </div>
           ))
         }

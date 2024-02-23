@@ -9,7 +9,7 @@ import { IoMdMenu } from "react-icons/io";
 const Navbar = () => {
   const pathname = usePathname();
   return (
-    <div className='w-screen top-0 bg-pink-500 text-white fixed flex justify-center items-center gap-6 sm:gap-10 md:gap-14 p-2 shadow'>
+    <div className='w-screen top-0 z-50 bg-pink-500 text-white fixed flex justify-center items-center gap-6 sm:gap-10 md:gap-14 p-2 shadow'>
       <Link href={'/'} className={`flex flex-col items-center text-xl sm:text-1xl md:text-2xl link ${pathname === '/' ? 'active' : ''}`}><span><IoHome/></span><span className='text-xs hidden md:block'>Home</span></Link>
       <Link href={'/network'} className={`flex flex-col items-center text-xl sm:text-1xl md:text-2xl link ${pathname === '/network' ? 'active' : ''}`}><span><FaUserFriends/></span><span className='text-xs hidden md:block'>My Network</span></Link>
       <Link href={'/jobs'} className={`flex flex-col items-center text-xl sm:text-1xl md:text-2xl link ${pathname === '/jobs' ? 'active' : ''}`}><span><IoBagHandleSharp/></span><span className='text-xs hidden md:block'>Jobs</span></Link>

@@ -3,13 +3,9 @@ import UserAbout from './UserAbout';
 import UserMore from './UserMore';
 import UserPost from './UserPost';
 import Image from 'next/image';
-import { RiImageAddFill } from "react-icons/ri";
 import React, {useState, useEffect} from 'react'
-import { FaArrowLeft, FaCirclePlus } from "react-icons/fa6";
 import { RiFileEditFill } from "react-icons/ri";
 import axios from 'axios';
-import ProfileBackImage from './ProfileBackImage'
-import ProfileImage from './ProfileImage';
 import UserProfilDetail from '@/components/UserProfilDetail'
 
 interface ProfileTypes {
@@ -51,14 +47,6 @@ const Profile = () => {
   const toggleDownItems = () => {
     setShowDownItems(!showDownItems);
   };
-  const [bgImage, setbgImage] = useState(false);
-  const handelBgImage = () =>{
-    setbgImage(!bgImage)
-  }
-  const [profileImage, setprofileImage] = useState(false);
-  const handelProfImage = () =>{
-    setprofileImage(!profileImage)
-  }
   const [userId, setId] = useState('')
   const [userName, setName] = useState('')
   const [userEmail, setEmail] = useState('')
@@ -96,10 +84,7 @@ const Profile = () => {
   
   return (
     <div className='flex flex-col items-center'>
-        <div className="p-2 w-[310px] sm:w-[410px] md:w-[510px] mb-2 border ">
-          <button onClick={handelBgImage} className="text-black font-bold text-4xl absolute inline-block">
-            <RiImageAddFill/>
-          </button>
+        <div className="p-2 w-[310px] sm:w-[410px] md:w-[510px] mb-2 border">
           {
            dataBackground && dataBackground.map((ele: any)=>(
           <div key={ele} className="w-[300px] md:w-[480px] h-[200px] md:h-[300px] overflow-hidden">
@@ -109,17 +94,12 @@ const Profile = () => {
           }
           {
            profilImg && profilImg.map((e: any)=>(
-          <div key={e} className="border-4 border-white absolute -mt-20 md:-mt-28 flex overflow-hidden justify-center items-center rounded-full w-[100px] md:w-[150px] h-[100px] md:h-[150px]">
+          <div key={e} className="-mt-40 md:-mt-54 flex overflow-hidden justify-center items-center rounded-full w-[100px] md:w-[150px] h-[100px] md:h-[150px]">
             <Image src={e.profilImg} alt="Bird" className='bg-gray-200' width={500} height={500}/>
           </div>
             ))
           }
-          <button onClick={handelProfImage} className="text-gray-200 font-bold ml-10 md:ml-24 text-2xl md:text-4xl flex justify-end absolute">
-            <RiImageAddFill/>
-          </button>
-          {bgImage && <ProfileBackImage/>}
-          {profileImage && <ProfileImage/>}
-          <div className="w-full flex justify-end mt-7 p-2">
+          <div className="w-full flex justify-end p-2">
             <button onClick={toggleDownItems} className='text-2xl' ><RiFileEditFill/></button>
           </div>
             {showDownItems ? <UserProfilDetail/>:

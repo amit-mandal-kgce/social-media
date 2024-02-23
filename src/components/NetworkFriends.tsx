@@ -58,7 +58,6 @@ const Connections = () => {
     const userUserall =userall.find((ele: any)=>(ele._id === userId)) || {};
     return{...exe,...userProfilesData,...userUserall,_id: exe._id}
   })
-  // console.log('hhh', finalConnectionOther)
   // Remove connections.................................
   const handelClickRemove = async (_id: any) =>{
     try {
@@ -74,34 +73,38 @@ const Connections = () => {
     <div>
       {
         finalConnection && finalConnection.map((lel: any)=>(
-            <div key={lel} className="border p-2 gap-4 flex flex-row items-center bg-teal-200 shadow mb-2">
-              <Image src={lel.profilImg} alt='Bird' className='bg-gray-200' width={70} height={70} />
-              <div className="flex flex-col">
-              <h1 className='text-xs font-light mb-2'>12 Connections</h1>
-              <h1 className="text-xs md:text-sm font-bold">{lel.username}</h1>
-              <h1 className="text-xs md:text-sm font-bold">{lel.email}</h1>
-              <h1 className="text-xs md:text-sm font-bold">{lel._id}</h1>
-              <div className="flex flex-row gap-3">
-                <Link href={`/message/${lel.connectId}`} className='px-3 py-2 text-xs bg-blue-500 text-white shadow mt-2 font-bold'>Message</Link>
-                <button onClick={()=> handelClickRemove(lel._id)} className='px-3 py-2 bg-blue-500 text-white text-xs shadow mt-2 font-bold'>Unfollow</button>
+            <div key={lel} className="border p-2 bg-teal-200 shadow mb-2">
+              <div className="gap-4 flex mb-3 flex-row items-center">
+              <div className="w-12 h-12 overflow-hidden rounded-full">
+                <Image src={lel.profilImg} alt='Bird' className='bg-gray-200' width={100} height={100} />
               </div>
+              <div className="flex flex-col">
+              <Link href={`/networkprofile/${lel._id}`} className="text-xs md:text-sm font-bold">{lel.username}</Link>
+              <Link href={`/networkprofile/${lel._id}`} className="text-xs md:text-sm font-light">{lel.email}</Link>
+              </div>
+              </div>
+              <div className="flex flex-row justify-around gap-2">
+                <Link href={`/message/${lel.userId}`} className='px-5 py-2 text-xs bg-blue-500 text-white shadow mt-2 font-bold'>Message</Link>
+                <button onClick={()=> handelClickRemove(lel._id)} className='px-5 py-2 bg-blue-500 text-white text-xs shadow mt-2 font-bold'>Unfollow</button>
               </div>
             </div>
         ))
       }
       {
         finalConnectionOther && finalConnectionOther.map((loal: any)=>(
-            <div key={loal} className="border p-2 gap-4 flex flex-row items-center bg-teal-200 shadow mb-2">
-              <Image src={loal.profilImg} alt='Bird' className='bg-gray-200' width={70} height={70} />
-              <div className="flex flex-col">
-              <h1 className='text-xs font-light mb-2'>12 Connections</h1>
-              <h1 className="text-xs md:text-sm font-bold">{loal.username}</h1>
-              <h1 className="text-xs md:text-sm font-bold">{loal.email}</h1>
-              <h1 className="text-xs md:text-sm font-bold">{loal._id}</h1>
-              <div className="flex flex-row gap-3">
-                <Link href={`/message/${loal.connectId}`} className='px-3 py-2 text-xs bg-blue-500 text-white shadow mt-2 font-bold'>Message</Link>
-                <button onClick={()=> handelClickRemove(loal._id)} className='px-3 py-2 bg-blue-500 text-white text-xs shadow mt-2 font-bold'>Unfollow</button>
+            <div key={loal} className="border p-2 bg-teal-200 shadow mb-2">
+              <div className="gap-4 flex mb-3 flex-row items-center">
+              <div className="w-12 h-12 overflow-hidden rounded-full">
+                <Image src={loal.profilImg} alt='Bird' className='bg-gray-200' width={100} height={100} />
               </div>
+              <div className="flex flex-col">
+              <Link href={`/networkprofile/${loal._id}`} className="text-xs md:text-sm font-bold">{loal.username}</Link>
+              <Link href={`/networkprofile/${loal._id}`} className="text-xs md:text-sm font-light">{loal.email}</Link>
+              </div>
+              </div>
+              <div className="flex flex-row justify-around gap-2">
+                <Link href={`/message/${loal.userId}`} className='px-5 py-2 text-xs bg-blue-500 text-white shadow mt-2 font-bold'>Message</Link>
+                <button onClick={()=> handelClickRemove(loal._id)} className='px-5 py-2 bg-blue-500 text-white text-xs shadow mt-2 font-bold'>Unfollow</button>
               </div>
             </div>
         ))

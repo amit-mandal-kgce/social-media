@@ -60,7 +60,7 @@ const handelSubmit = async (e: any)=>{
     }
 }
   return (
-    <div className='flex flex-col p-2 w-full mt-10 bg-gray-100 shadow' >
+    <div className='flex flex-col p-2 w-full mt-2 bg-gray-100 shadow' >
       <form className="flex flex-col" onSubmit={handelSubmit}>
         <input type="file" className='mb-2' accept="image/*" onChange={handleImageChange}/>
         <div className="">

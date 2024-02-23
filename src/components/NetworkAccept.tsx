@@ -75,16 +75,19 @@ const NetworkAccept = () => {
     <div>
         {
             requestAllFinal && requestAllFinal.map((exp: any)=>(
-                <div key={exp} className="border p-2 gap-4 flex flex-row items-center bg-teal-300 shadow-2xl mb-2">
-                    <Image src={exp.profilImg} alt='Bird' className='bg-gray-200' width={70} height={70} />
-                    <div className="flex flex-col">
-                      <h1>{exp._id}Id Main</h1>
-                      <h1>{exp.userId}UserId</h1>
-                        <Link href={`/networkprofile/${exp.userId}`} className='text-xs font-light mb-1'>12 Connections</Link>
-                        <Link href={`/networkprofile/${exp.userId}`} className="text-xs md:text-sm font-bold mb-2">{exp.username}</Link>
-                        <Link href={`/networkprofile/${exp.userId}`} className="text-xs md:text-sm font-bold mb-2">{exp.email}</Link>
-                        <button onClick={()=> handelClick(exp._id, exp.userId)} className='border border-blue-500 px-2 rounded-lg text-white bg-blue-500 shadow'>Follow Back</button>
+                <div key={exp} className="border p-2 bg-teal-300 shadow-2xl mb-2">
+                  <div className="gap-4 flex flex-row items-center mb-2">
+                    <div className="w-12 h-12 rounded-full overflow-hidden">
+                      <Image src={exp.profilImg} alt='Bird' className='bg-gray-200' width={70} height={70} />
                     </div>
+                    <div className="flex flex-col">
+                      {/* <h1>{exp._id}Id Main</h1> */}
+                      {/* <h1>{exp.userId}UserId</h1> */}
+                        <Link href={`/networkprofile/${exp.userId}`} className="text-xs md:text-sm font-bold mb-2">{exp.username}</Link>
+                        <Link href={`/networkprofile/${exp.userId}`} className="text-xs md:text-sm font-light mb-2">{exp.email}</Link>
+                    </div>
+                    </div>
+                    <button onClick={()=> handelClick(exp._id, exp.userId)} className='border border-blue-500 w-full rounded-lg text-white bg-blue-500 shadow'>Follow Back</button>
                 </div>
             ))
         }

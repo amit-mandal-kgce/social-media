@@ -64,6 +64,7 @@ const Home = () => {
     const userProfilesData =userprofiles.find((ele)=>(ele.userId === userId)) || {};
     return {...ele,...userDetails,...userProfilesData,_id:ele._id}
   })
+  console.log('final', dataFinal)
   return (
     <div className='flex flex-col justify-center items-center bg-gray-300'>
       <div className="w-[300px] sm:w-[400px] md:w-[500px]">
@@ -86,10 +87,10 @@ const Home = () => {
        dataFinal && dataFinal.map((ele: any)=>(
       <div key={ele} className="">
       <div className="bg-gray-100 my-2 border shadow p-2 w-[300px] sm:w-[400px] md:w-[500px]">
-        <div className=" flex flex-row items-center gap-4 mb-3 py-2 border-b-2">
+        <Link href={`/networkprofile/${ele.userId}`} className=" flex flex-row items-center gap-4 mb-3 py-2 border-b-2">
           <Image src={ele.profilImg} alt="Bird" width={100} height={100} className='w-[30px] h-[30px] rounded-full bg-gray-200' />
           <h1 className="font-bold text-sm md:text-base">{ele.username}</h1>
-        </div>
+        </Link>
         <div className="text-xs md:text-sm mb-3">{ele.description}</div>
         <div className="flex w-full justify-center">
           <Image src={ele.imgposty} alt="Bird" width={1000} height={1000} className='w-[90%] h-[400px] bg-gray-300' />
