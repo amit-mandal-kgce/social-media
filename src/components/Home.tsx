@@ -63,6 +63,7 @@ const Home = () => {
     const userProfilesData =userprofiles.find((ele)=>(ele.userId === userId)) || {};
     return {...ele,...userDetails,...userProfilesData,_id:ele._id}
   })
+  console.log('dataPost', profilImg)
   return (
     <div className='flex flex-col justify-center items-center bg-gray-300'>
       <div className="w-[300px] sm:w-[400px] md:w-[500px]">
